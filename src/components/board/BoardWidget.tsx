@@ -49,44 +49,44 @@ export function BoardWidget({
       onMouseDown={() => onFront(id)}
     >
       <div
-        className="rounded-2xl overflow-hidden shadow-2xl"
+        className="rounded-2xl overflow-hidden"
         style={{
-          background: 'rgba(255,255,255,0.07)',
-          backdropFilter: 'blur(20px)',
-          WebkitBackdropFilter: 'blur(20px)',
-          border: '1px solid rgba(255,255,255,0.12)',
-          boxShadow: '0 8px 32px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1)',
+          background: 'rgba(255,255,255,0.78)',
+          backdropFilter: 'blur(40px)',
+          WebkitBackdropFilter: 'blur(40px)',
+          border: '1px solid rgba(255,255,255,0.9)',
+          boxShadow: '0 4px 24px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.05)',
         }}
       >
         {/* Header / drag handle */}
         <div
           className={`flex items-center gap-2 px-3 py-2.5 ${pinned ? 'cursor-default' : 'cursor-grab active:cursor-grabbing'}`}
-          style={{ background: 'rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}
+          style={{ background: 'rgba(0,0,0,0.025)', borderBottom: '1px solid rgba(0,0,0,0.06)' }}
           onPointerDown={onPointerDown}
           onPointerMove={onPointerMove}
           onPointerUp={onPointerUp}
         >
           {/* Drag dots */}
-          <div className="flex flex-col gap-0.5 opacity-30">
+          <div className="flex flex-col gap-0.5 opacity-25">
             <div className="flex gap-0.5">
-              <span className="h-1 w-1 rounded-full bg-white" />
-              <span className="h-1 w-1 rounded-full bg-white" />
+              <span className="h-1 w-1 rounded-full bg-gray-600" />
+              <span className="h-1 w-1 rounded-full bg-gray-600" />
             </div>
             <div className="flex gap-0.5">
-              <span className="h-1 w-1 rounded-full bg-white" />
-              <span className="h-1 w-1 rounded-full bg-white" />
+              <span className="h-1 w-1 rounded-full bg-gray-600" />
+              <span className="h-1 w-1 rounded-full bg-gray-600" />
             </div>
           </div>
 
-          {icon && <span className="text-white/50">{icon}</span>}
-          <span className="flex-1 text-xs font-medium text-white/50 select-none tracking-wide uppercase">{title}</span>
+          {icon && <span className="text-gray-400">{icon}</span>}
+          <span className="flex-1 text-xs font-medium text-gray-400 select-none tracking-wide uppercase">{title}</span>
 
           {/* Actions */}
           <div className="flex items-center gap-1">
             <button
               onPointerDown={e => e.stopPropagation()}
               onClick={() => onPin(id)}
-              className={`rounded-md p-1 transition-colors ${pinned ? 'text-signal' : 'text-white/25 hover:text-white/60'}`}
+              className={`rounded-md p-1 transition-colors ${pinned ? 'text-signal' : 'text-gray-300 hover:text-gray-600'}`}
               title={pinned ? 'Lossa' : 'Nåla fast'}
             >
               <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill={pinned ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2">
@@ -97,7 +97,7 @@ export function BoardWidget({
             <button
               onPointerDown={e => e.stopPropagation()}
               onClick={() => onClose(id)}
-              className="rounded-md p-1 text-white/25 hover:text-red-400 transition-colors"
+              className="rounded-md p-1 text-gray-300 hover:text-red-400 transition-colors"
               title="Ta bort widget"
             >
               <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

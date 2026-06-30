@@ -42,14 +42,14 @@ export function TimerWidget() {
     <>
       <div className="px-4 py-4 flex flex-col items-center gap-3">
         {/* Elapsed time display */}
-        <div className={`font-display text-4xl font-medium tabular-nums tracking-tight transition-colors duration-500 ${isActive ? 'text-signal animate-breath' : 'text-white/20'}`}>
+        <div className={`font-display text-4xl font-medium tabular-nums tracking-tight transition-colors duration-500 ${isActive ? 'text-signal animate-breath' : 'text-gray-200'}`}>
           {formatElapsedTime(elapsedSeconds)}
         </div>
 
         {/* Status dot */}
         <div className="flex items-center gap-1.5">
-          <span className={`h-1.5 w-1.5 rounded-full ${isActive ? 'bg-signal animate-pulse' : 'bg-white/20'}`} />
-          <span className="text-xs text-white/40">{loading ? '...' : isActive ? 'Kör' : 'Inaktiv'}</span>
+          <span className={`h-1.5 w-1.5 rounded-full ${isActive ? 'bg-signal animate-pulse' : 'bg-gray-300'}`} />
+          <span className="text-xs text-gray-400">{loading ? '...' : isActive ? 'Kör' : 'Inaktiv'}</span>
         </div>
 
         {/* Actions */}

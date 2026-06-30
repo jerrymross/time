@@ -24,71 +24,29 @@ export default function BoardPage() {
   return (
     <AppShell>
       {/* Break out of AppShell padding to fill content area */}
-      <div className="-mx-4 sm:-mx-6 lg:-mx-8 -my-6 lg:-my-8 relative" style={{ minHeight: 'calc(100vh - 4rem)' }}>
-
-        {/* ── Aurora background ── */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ background: '#080D0A' }}>
-          {/* Blob 1 — forest green */}
-          <div
-            className="absolute rounded-full animate-aurora-1"
-            style={{
-              width: '70vw', height: '70vw',
-              top: '-20%', left: '-15%',
-              background: 'radial-gradient(circle, rgba(17,76,54,0.55) 0%, transparent 70%)',
-              filter: 'blur(60px)',
-            }}
-          />
-          {/* Blob 2 — teal */}
-          <div
-            className="absolute rounded-full animate-aurora-2"
-            style={{
-              width: '55vw', height: '55vw',
-              bottom: '-15%', right: '-10%',
-              background: 'radial-gradient(circle, rgba(8,51,68,0.5) 0%, transparent 70%)',
-              filter: 'blur(60px)',
-            }}
-          />
-          {/* Blob 3 — purple accent */}
-          <div
-            className="absolute rounded-full animate-aurora-3"
-            style={{
-              width: '40vw', height: '40vw',
-              top: '30%', right: '25%',
-              background: 'radial-gradient(circle, rgba(49,16,78,0.35) 0%, transparent 70%)',
-              filter: 'blur(50px)',
-            }}
-          />
-          {/* Subtle grid overlay */}
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: 'linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)',
-              backgroundSize: '40px 40px',
-            }}
-          />
-        </div>
+      <div className="-mx-4 sm:-mx-6 lg:-mx-8 -my-6 lg:-my-8 relative" style={{ minHeight: 'calc(100vh - 4rem)', background: '#F2F2F7' }}>
 
         {/* ── Toolbar ── */}
         <div
           className="relative z-50 flex items-center justify-between px-4 sm:px-6 py-3"
           style={{
-            borderBottom: '1px solid rgba(255,255,255,0.07)',
-            background: 'rgba(8,13,10,0.6)',
-            backdropFilter: 'blur(12px)',
-            WebkitBackdropFilter: 'blur(12px)',
+            borderBottom: '1px solid rgba(0,0,0,0.08)',
+            background: 'rgba(242,242,247,0.85)',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
           }}
         >
           <div>
-            <h1 className="text-sm font-display font-medium text-white/80 tracking-wide">Anslagstavla</h1>
-            <p className="text-xs text-white/30">Dra och släpp widgets var som helst · Dubbelklicka lappar för att redigera</p>
+            <h1 className="text-sm font-display font-medium text-gray-800 tracking-wide">Anslagstavla</h1>
+            <p className="text-xs text-gray-400">Dra och släpp widgets var som helst · Dubbelklicka lappar för att redigera</p>
           </div>
 
           {/* Add widget button */}
           <div className="relative" ref={menuRef}>
             <button
               onClick={() => setMenu(v => !v)}
-              className="flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-medium text-white/70 hover:text-white transition-colors"
-              style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)' }}
+              className="flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs font-medium text-gray-600 hover:text-gray-900 transition-colors"
+              style={{ background: 'rgba(0,0,0,0.06)', border: '1px solid rgba(0,0,0,0.08)' }}
             >
               <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" />
@@ -100,51 +58,52 @@ export default function BoardPage() {
               <div
                 className="absolute right-0 top-full mt-2 rounded-2xl overflow-hidden py-2 min-w-[180px] z-50"
                 style={{
-                  background: 'rgba(12,20,16,0.95)',
-                  backdropFilter: 'blur(20px)',
-                  border: '1px solid rgba(255,255,255,0.12)',
-                  boxShadow: '0 20px 40px rgba(0,0,0,0.6)',
+                  background: 'rgba(255,255,255,0.92)',
+                  backdropFilter: 'blur(40px)',
+                  WebkitBackdropFilter: 'blur(40px)',
+                  border: '1px solid rgba(0,0,0,0.07)',
+                  boxShadow: '0 8px 32px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06)',
                 }}
               >
                 {/* Timer */}
                 <button
                   onClick={() => { board.addTimer(); setMenu(false) }}
                   disabled={board.hasTimer}
-                  className="flex w-full items-center gap-2.5 px-3 py-2 text-sm text-white/70 hover:text-white hover:bg-white/5 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                  className="flex w-full items-center gap-2.5 px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-black/[0.04] disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
                 >
                   <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <circle cx="12" cy="12" r="9" /><polyline points="12 7 12 12 15 15" />
                   </svg>
                   Timer
-                  {board.hasTimer && <span className="ml-auto text-xs text-white/25">Aktiv</span>}
+                  {board.hasTimer && <span className="ml-auto text-xs text-gray-400">Aktiv</span>}
                 </button>
 
                 {/* AI news */}
                 <button
                   onClick={() => { board.addAINews(); setMenu(false) }}
                   disabled={board.hasAINews}
-                  className="flex w-full items-center gap-2.5 px-3 py-2 text-sm text-white/70 hover:text-white hover:bg-white/5 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                  className="flex w-full items-center gap-2.5 px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-black/[0.04] disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
                 >
                   <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M4 11a9 9 0 019-9M4 11a9 9 0 009 9M4 11H2M22 11h-2M12 2v2M12 20v2M6.36 6.36l-1.41-1.41M19.05 4.95l-1.41 1.41M6.36 17.64l-1.41 1.41M19.05 19.05l-1.41-1.41" />
                   </svg>
                   AI-nyheter
-                  {board.hasAINews && <span className="ml-auto text-xs text-white/25">Aktiv</span>}
+                  {board.hasAINews && <span className="ml-auto text-xs text-gray-400">Aktiv</span>}
                 </button>
 
                 {/* Divider */}
-                <div className="my-1.5 border-t border-white/8" />
+                <div className="my-1.5 border-t border-black/[0.06]" />
 
                 {/* Sticky notes */}
                 <div className="px-3 pb-1">
-                  <p className="text-xs text-white/25 mb-1.5">Klibbis</p>
+                  <p className="text-xs text-gray-400 mb-1.5">Klibbis</p>
                   <div className="flex gap-1.5">
                     {STICKY_COLORS.map(({ color, bg, label }) => (
                       <button
                         key={color}
                         onClick={() => { board.addSticky(color); setMenu(false) }}
-                        className="h-6 w-6 rounded-md shadow-md hover:scale-110 transition-transform"
-                        style={{ background: bg }}
+                        className="h-6 w-6 rounded-md hover:scale-110 transition-transform"
+                        style={{ background: bg, border: '1px solid rgba(0,0,0,0.08)', boxShadow: '0 1px 3px rgba(0,0,0,0.10)' }}
                         title={label}
                       />
                     ))}
